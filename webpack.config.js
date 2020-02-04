@@ -42,7 +42,48 @@ module.exports = {
       {
         test: /bootstrap\/dist\/js\/umd\//,
         use: "imports-loader?jQuery=jquery"
-      }
+      },
+      {
+        test: /\.(jpg|png)$/,
+        use: {
+          loader: 'url-loader',
+        },
+      },
+    //   {
+    //     test: /\.(jpg|png|gif)$/,
+    //     use: [
+    //       {
+    //         loader: "file-loader",
+    //         options: {
+    //           name: "[name].[ext]",
+    //           outputPath: "static/",
+    //           useRelativePath: true
+    //         }
+    //       },
+    //       {
+    //         loader: "image-webpack-loader",
+    //         options: {
+    //           mozjpeg: {
+    //             progressive: true,
+    //             quality: 65
+    //           },
+    //           optipng: {
+    //             enabled: true
+    //           },
+    //           pngquant: {
+    //             quality: "65-90",
+    //             speed: 4
+    //           },
+    //           gifsicle: {
+    //             interlaced: false
+    //           },
+    //           webp: {
+    //             quality: 75
+    //           }
+    //         }
+    //       }
+    //     ]
+    //   }
     ]
   },
   plugins: [
@@ -56,7 +97,7 @@ module.exports = {
       chunkFilename: "[id].css"
     }),
     new HtmlWebpackPlugin({
-      title: "GSM Server",
+      title: "Black Friday",
       template: "./src/index.handlebars"
     }),
     new webpack.ProvidePlugin({
@@ -65,5 +106,10 @@ module.exports = {
       "window.jQuery": "jquery",
       Tether: "tether"
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      handlebars: "handlebars/dist/handlebars.min.js"
+    }
+  }
 };

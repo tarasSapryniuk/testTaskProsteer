@@ -1,1 +1,64 @@
 @import "~bootstrap/scss/bootstrap"
+
+$background : url("../assets/background.jpg") 
+
+@mixin box-shadow($shadow...)
+    -webkit-box-shadow: $shadow
+    -moz-box-shadow: $shadow
+    box-shadow: $shadow
+
+.blog-header
+    line-height: 1
+
+.jumbotron
+    background-image: $background
+    background-size: cover
+    border-radius: 0
+    padding-top: 10px !important
+    @include box-shadow(inset 30px 30px 30px #00000050, inset 15px 15px 15px #00000035)
+
+// toggle menu
+.mh-sr-only
+    margin: -1px
+    padding: 0
+    border: 0
+
+.mh-sr-only
+    position: absolute
+    width: 1px
+    height: 1px
+    overflow: hidden
+    clip: rect(0, 0, 0, 0)
+
+.mh-icon-bar
+    background-color: currentColor
+    -webkit-transform-origin: 21px
+    -ms-transform-origin: 21px
+    transform-origin: 21px
+
+.mh-icon-bar
+    display: block
+    height: 2px
+    width: 22px
+    transition: -webkit-transform 0.2s
+    -webkit-transition: -webkit-transform 0.2s
+    -webkit-transition: -webkit-transform .2s
+    transition: -webkit-transform .2s
+    transition: transform .2s
+    transition: transform .2s,
+    -webkit-transform .2s 
+    transition: transform 0.2s,
+    -webkit-transform 0.2s 
+    margin: .4em 0
+
+.mh-header-primary
+    border: none
+    background-color: transparent
+// toggle menu
+
+.blog-header-logo, .chat-header-logo
+    img
+        height: 22px
+
+// .counter
+//     background-image: $counter
