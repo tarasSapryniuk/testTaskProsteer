@@ -7,4 +7,11 @@ export default class HandlebarsHelper {
     document.querySelector(selector).innerHTML += data;
     console.log(document.querySelector(selector));
   }
+
+  setValue(value, selector) {
+    const template = Handlebars.compile('<div class="text"><h2>{{value}}</h2></div>');
+    const data = template({ value });
+    document.querySelector(selector).innerHTML += data;
+
+  }
 }

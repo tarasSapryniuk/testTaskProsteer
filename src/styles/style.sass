@@ -1,6 +1,7 @@
 @import "~bootstrap/scss/bootstrap"
 
 $background : url("../assets/background.jpg") 
+$counter : url("../assets/counter.png") 
 
 @mixin box-shadow($shadow...)
     -webkit-box-shadow: $shadow
@@ -60,5 +61,22 @@ $background : url("../assets/background.jpg")
     img
         height: 22px
 
-// .counter
-//     background-image: $counter
+.counter
+    position: relative
+    display: block
+    text-align: center
+
+    .img-counter
+        width: 45px
+        height: 61px
+        background-image: $counter
+        justify-content: center
+        margin: 2.5px
+        h2
+            margin-bottom: 0px
+    // .text
+    //     position: absolute
+    //     top: 50%
+    //     left: 50%
+    //     text-align: center
+    //     transform: translateX(-50%) translateY(-50%)

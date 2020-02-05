@@ -2,8 +2,6 @@ import CookieHelper from "./cookieHelper";
 import DateHelper from "./dateHelper";
 import HandlebarsHelper from "./handlebarsHelper";
 
-import counter from "../assets/counter.png";
-
 export default class MyTimer {
   constructor(amount) {
     this.hh = new HandlebarsHelper();
@@ -11,14 +9,6 @@ export default class MyTimer {
     this.ch = new CookieHelper();
     this._amount = amount | 0;
     this.isClearInterval = false;
-  }
-
-  get timerDom() {
-    return this._timerDom;
-  }
-
-  set timerDom(timerDom) {
-    this._timerDom = timerDom;
   }
 
   set amount(amount) {
@@ -29,22 +19,42 @@ export default class MyTimer {
     return this._amount;
   }
 
-  createTimer() {
-    let timer = setInterval(() => {
-      let difference = 0;
-      if (this.ch.getCookie("date")) {
-        const end_date = this.ch.getCookie("date");
-        difference = this.dh.getDate(end_date - new Date().getTime());
-        console.log(difference);
-        this.drawTimer(difference);
-      } else {
-        this.ch.cookie = this.amount;
-      }
+  createTimer(dom) {
+    this._timer(dom);
+    let timer = setInterval(() => this._timer(dom), 1000);
+  }
 
-      if (difference < 0) {
-        clearInterval(timer);
-        this.isClearInterval = true;
+  _timer(dom) {
+    let difference = 0;
+    if (this.ch.getCookie("date")) {
+      const end_date = this.ch.getCookie("date");
+      difference = this.dh.getDate(end_date - new Date().getTime());
+      this.drawTimer(difference, dom);
+    } else {
+      this.ch.cookie = this.amount;
+    }
+
+    if (difference < 0) {
+      clearInterval(timer);
+      this.isClearInterval = true;
+    }
+  }
+
+  drawTimer(date, doms) {
+    for (const i in doms) {
+      const elem = document.querySelectorAll(`#${doms[i]} .img-counter h2`);
+      this._draw(elem, date[this.dh.getDateKey(i)]);
+    }
+  }
+
+  _draw(array, date) {
+    if (/^[0-9]{2}[:.,-]?$/.test(date)) {
+      for (let index = 0; index < array.length; index++) {
+        array[index].innerHTML = date.toString()[index];
       }
-    }, 1000);
+    } else if (/^[0-9]{1}[:.,-]?$/.test(date)) {
+      array[0].innerHTML = 0;
+      array[1].innerHTML = date.toString()[0];
+    }
   }
 }

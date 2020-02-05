@@ -1,4 +1,7 @@
 export default class DateHelper {
+    getDateKey(id) {
+        return ['days', 'hours', 'minutes', 'seconds'][id];
+    }
     getDate(date) {
         return {
             days: Math.floor(date / (1000 * 60 * 60 * 24)),
