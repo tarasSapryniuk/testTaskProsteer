@@ -13,14 +13,14 @@
 </head>
 
 <body>
-
+    {{!-- <div><%= require('html!./views/header.html') %></div> --}}
     <div class="jumbotron p-4 p-md-5 text-white">
 
         {{!-- Header --}}
         <header class="blog-header py-4">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4">
-                    <button type="button" role="menu" class="mh-header-primary svelte-v64zdx mh-menu-closed">
+                    <button type="button" role="menu" class="mh-header-primary">
                         <span class="mh-sr-only">Toggle navigation</span>
                         <span class="mh-icon-bar text-light"></span>
                         <span class="mh-icon-bar text-light"></span>
@@ -37,54 +37,330 @@
         {{!-- Header --}}
 
         <div class="col-md-12 px-0 text-center">
-            <h1 class="display-4 ">BLACK FRIDAY</h1>
-            <p class="lead my-3">EXCLUSIVE DISCOUNTS </p>
-            <p class="lead my-3">UP TO 27% </p>
-            <div class="row">
-                <div class="col-md-3 counter d-flex justify-content-center" id="days">
-                    DAYS
-                    <div class="img-counter d-flex align-items-center">
-                        <h2></h2> 
+            <div class="justify-content-center d-flex">
+                <div class="left-side"></div>
+                <div class="offer">
+                    <span class="display-4 d-flex offer-title">BLACK FRIDAY</span>
+                    <p class="lead my-3 offer-desc">EXCLUSIVE DISCOUNTS </p>
+                </div>
+                <div class="right-side"></div>
+            </div>
+            
+            
+            <p class="lead my-3 offer-discount">UP TO 27% </p>
+            <div class="row justify-content-center">
+                <div class="justify-content-center timer" id="days">
+                    <div class="counter d-flex justify-content-center">
+                        <div class="img-counter d-flex align-items-center">
+                            <h2></h2>
+                        </div>
+                        <div class="img-counter d-flex align-items-center">
+                            <h2></h2>
+                        </div>
                     </div>
-                    <div class="img-counter d-flex align-items-center">
-                        <h2></h2> 
+                    <p>DAYS</p>
+                </div>
+                <div class="justify-content-center timer" id="hours">
+                    <div class="counter d-flex justify-content-center">
+                        <div class="img-counter d-flex align-items-center">
+                            <h2></h2>
+                        </div>
+                        <div class="img-counter d-flex align-items-center">
+                            <h2></h2>
+                        </div>
+                    </div>
+                    <p>HOURS</p>
+                </div>
+                <div class="justify-content-center timer" id="minutes">
+                    <div class="counter d-flex justify-content-center">
+                        <div class="img-counter d-flex align-items-center">
+                            <h2></h2>
+                        </div>
+                        <div class="img-counter d-flex align-items-center">
+                            <h2></h2>
+                        </div>
+                    </div>
+                    <p>MINUTES</p>
+                </div>
+                <div class="justify-content-center timer" id="seconds">
+                    <div class="counter d-flex justify-content-center">
+                        <div class="img-counter d-flex align-items-center">
+                            <h2></h2>
+                        </div>
+                        <div class="img-counter d-flex align-items-center">
+                            <h2></h2>
+                        </div>
+                    </div>
+                    <p>SECONDS</p>
+                </div>
+            </div>
+            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">
+                    Заходите к нам на сайт 25 ноября! В
+                    самую незабываемую С пятницу в интернет-магазине GsmServer стартует самая безудержная
+                    распродажа.</a></p>
+        </div>
+    </div>
+    <div class="dropdown">
+        <div id="myDropdown" class="dropdown-content container pl-4">
+            <button type="button" role="menu" class="mh-menu-closed">
+                <i class="fas fa-times"></i>
+            </button>
+            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <a href="#unlock">Flash and Unlock</a>
+            <a href="#base">Cell Phone Parts</a>
+            <a href="#blog">Repair Equipment</a>
+            <a href="#contact">Car Electronics</a>
+            <a href="#custom">Parts and Component</a>
+            <a href="#support">STEM Toys & Hobbies</a>
+            <a href="#tools">Engry Saving</a>
+            <a href="#tools">Go to Chart</a>
+            <a href="#tools">Log In</a>
+        </div>
+    </div>
+
+    <div class="friday">
+        <div class="row justify-content-center">
+            <div class="col col-sm-2">
+                <div class="justify-content-center align-self-center">
+                    <a href="#unlock" id="friday-unlock" class="friday-item d-flex align-items-center"></a>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="justify-content-center align-self-center">
+                    <a href="#" id="friday-lamp" class="friday-item d-flex align-items-center"></a>
+                </div>
+            </div>
+            <div class="col col-sm-2">
+                <div class="justify-content-center align-self-center">
+                    <a href="#" id="friday-stem" class="friday-item d-flex align-items-center"></a>
+                </div>
+            </div>
+            <div class="col col-sm-2">
+                <div class="justify-content-center align-self-center">
+                    <a href="#" id="friday-energy" class="friday-item d-flex align-items-center"></a>
+                </div>
+            </div>
+            <div class="col col-sm-2">
+                <div class="justify-content-center align-self-center">
+                    <a href="#" id="friday-car" class="friday-item d-flex align-items-center"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="unlock">
+        <div class="container-fluid">
+            <div class="justify-content-center text-center section-title d-flex align-items-center">
+                <span>FLASH & UNLOCK</span>
+                <div class="discount-image d-flex align-items-center"></div>
+            </div>
+
+            <div class="card-deck row">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Octoplus Box Samsung + LG + JTAG Activated with Optimus Cable Set + JIG
+                            Set</h5>
+                        <p class="card-text">Octoplus Box is a groundbreaking phone servicing solution that combines
+                            unibox and JTAG interfaces and supports over 530 Samsung, 900 LG and 460 by JTAG mobile
+                            devices.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col img d-flex align-items-center justify-content-center" id="octoplus"></div>
+                            <div class="col d-flex flex-column">
+                                <h6></h6>
+                                <span><strike>USD 328.00</strike></span>
+                                <h5>USD 318.50</h5>
+                                <a href="#" class="button mt-auto">
+                                    <div class="buy_button d-flex align-items-center justify-content-center">
+                                        BUY NOW
+                                    </div>
+                                </a>
+                                <a href="#" class="button-more d-flex align-items-center mt-auto">
+                                    <span>See more</span>
+                                    <div></div>
+                                </a>
+                            </div>
+
+                        </div>
+                        {{!-- <small class="text-muted">Last updated 3 mins ago</small> --}}
                     </div>
                 </div>
-                <div class="col-md-3 counter d-flex justify-content-center" id="hours">
-                    HOURS
-                    <div class="img-counter d-flex align-items-center">
-                        <h2></h2> 
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Octopus Box Samsung + LG Edition with Optimus Cable Set</h5><input
+                            type="hidden" id="reserveTitle" />
+                        <p class="card-text">Octopus Samsung + LG Edition lets you perform Flash / Unlock / Repair
+                            operations with LG & Samsung cell phones with Octopus Box service tool.</p><input
+                            type="hidden" id="reserveText" />
                     </div>
-                    <div class="img-counter d-flex align-items-center">
-                        <h2></h2> 
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col img d-flex align-items-center justify-content-center" id="octopusfirst">
+                            </div>
+                            <div class="col d-flex flex-column">
+                                <h6></h6>
+                                <span><strike>USD 229.00</strike></span>
+                                <h5>USD 219.99</h5>
+                                <a href="#" class="button mt-auto">
+                                    <div class="buy_button d-flex align-items-center justify-content-center">
+                                        BUY NOW
+                                    </div>
+                                </a>
+                                <a href="#" class="button-more d-flex align-items-center mt-auto">
+                                    <span>See more</span>
+                                    <div></div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3 counter d-flex justify-content-center" id="minutes">
-                    MINUTES
-                    <div class="img-counter d-flex align-items-center">
-                        <h2></h2> 
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Octopus Box Samsung Edition with Optimus Cable Set</h5>
+                        <p class="card-text">Octopus Samsung Edition lets you perform Flash / Unlock / Repair
+                            operations with Samsung cell phones using Octopus Box service tool.</p>
                     </div>
-                    <div class="img-counter d-flex align-items-center">
-                        <h2></h2> 
-                    </div>
-                </div>
-                <div class="col-md-3 counter d-flex justify-content-center" id="seconds">
-                    SECONDS
-                    <div class="img-counter d-flex align-items-center">
-                       <h2></h2> 
-                    </div>
-                    <div class="img-counter d-flex align-items-center">
-                        <h2></h2> 
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col img d-flex align-items-center justify-content-center" id="octopussecond">
+                            </div>
+                            <div class="col d-flex flex-column">
+                                <h6></h6>
+                                <span><strike>USD 167.00</strike></span>
+                                <h5>USD 150.00</h5>
+                                <a href="#" class="button mt-auto">
+                                    <div class="buy_button d-flex align-items-center justify-content-center">
+                                        BUY NOW
+                                    </div>
+                                </a>
+                                <a href="#" class="button-more d-flex align-items-center mt-auto">
+                                    <span>See more</span>
+                                    <div></div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+
+            <div id="gotocat" class="d-flex justify-content-center">
+                <div class="col col-md-4">
+                    <a href="#" class="btn d-flex align-items-center justify-content-center">
+                        <span>GO TO CATEGORY</span>
+                    </a>
+
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="container-fluid">
+    </section>
 
-    </div>
+    <section id="lamps">
+        <div class="container-fluid">
+            <div class="justify-content-center text-center section-title d-flex align-items-center">
+                <span>TABLE LAMPS</span>
+                <div class="discount-image d-flex align-items-center"></div>
+            </div>
 
+            <div class="card-deck row">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">BST Dongle with Cable Set</h5>
+                        <p class="card-text">BST Dongle allows user to perform flash, unlock, remove screen lock, repair
+                            IMEI, NVM / EFS, root procedures in HTC and Samsung Android smartphones.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col img d-flex align-items-center justify-content-center" id="bst"></div>
+                            <div class="col d-flex flex-column">
+                                <h6></h6>
+                                <span><strike>USD 79.00</strike></span>
+                                <h5>USD 60.50</h5>
+                                <a href="#" class="button mt-auto">
+                                    <div class="buy_button d-flex align-items-center justify-content-center">
+                                        BUY NOW
+                                    </div>
+                                </a>
+                                <a href="#" class="button-more d-flex align-items-center mt-auto">
+                                    <span>See more</span>
+                                    <div></div>
+                                </a>
+                            </div>
+
+                        </div>
+                        {{!-- <small class="text-muted">Last updated 3 mins ago</small> --}}
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CS-Tool Dongle</h5><input type="hidden" id="reserveTitle" />
+                        <p class="card-text">CS-Tool Dongle (Chinese phone service tool) revolutionary phone servicing
+                            solution, which is supports MTK and SPD-based devices.</p><input type="hidden"
+                            id="reserveText" />
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col img d-flex align-items-center justify-content-center" id="cs"></div>
+                            <div class="col d-flex flex-column">
+                                <h6></h6>
+                                <span><strike>USD 59.00</strike></span>
+                                <h5>USD 50.00</h5>
+                                <a href="#" class="button mt-auto">
+                                    <div class="buy_button d-flex align-items-center justify-content-center">
+                                        BUY NOW
+                                    </div>
+                                </a>
+                                <a href="#" class="button-more d-flex align-items-center mt-auto">
+                                    <span>See more</span>
+                                    <div></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Furious Gold USB Key Activated with Packs 1, 2, 3, 4, 5, 6, 7, 8, 11</h5>
+                        <p class="card-text">Furious Gold USB Key pre-activated with Furious Gold Packs 1, 2, 3, 4, 5,
+                            6, 7, 8 & 11 is the latest device form Furious Team developed for mobile phones unlock and
+                            repair.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col img d-flex align-items-center justify-content-center" id="furious"></div>
+                            <div class="col d-flex flex-column">
+                                <h6></h6>
+                                <span><strike>USD 149.00</strike></span>
+                                <h5>USD 139.00</h5>
+                                <a href="#" class="button mt-auto">
+                                    <div class="buy_button d-flex align-items-center justify-content-center">
+                                        BUY NOW
+                                    </div>
+                                </a>
+                                <a href="#" class="button-more d-flex align-items-center mt-auto">
+                                    <span>See more</span>
+                                    <div></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gotocat" class="d-flex justify-content-center">
+                <div class="col col-md-4">
+                    <a href="#" class="btn d-flex align-items-center justify-content-center">
+                        <span>GO TO CATEGORY</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="black-friday-footer">
+
+    </footer>
 </body>
 
 </html>

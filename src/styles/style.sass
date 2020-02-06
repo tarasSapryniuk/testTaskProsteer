@@ -2,6 +2,14 @@
 
 $background : url("../assets/background.jpg") 
 $counter : url("../assets/counter.png") 
+$labe : url("../assets/labe.png") 
+$buy_black : url("../assets/buy_black.png") 
+$buy_red : url("../assets/buy_red.png") 
+$see_more_black : url("../assets/see_more_black.png") 
+$see_more_red : url("../assets/see_more_red.png") 
+
+$left_side: url("../assets/black_left.png")
+$right_side: url("../assets/black_right.png")
 
 @mixin box-shadow($shadow...)
     -webkit-box-shadow: $shadow
@@ -16,6 +24,7 @@ $counter : url("../assets/counter.png")
     background-size: cover
     border-radius: 0
     padding-top: 10px !important
+    margin-bottom: 0
     @include box-shadow(inset 30px 30px 30px #00000050, inset 15px 15px 15px #00000035)
 
 // toggle menu
@@ -55,7 +64,42 @@ $counter : url("../assets/counter.png")
 .mh-header-primary
     border: none
     background-color: transparent
+
+.mh-menu-closed
+    width: 35px
+    height: 35px
 // toggle menu
+.offer
+    margin-left: -2px
+
+    .offer-title
+        font-size: 50px
+        font-weight: bold
+        background-color: #000
+        padding: 13px 12px
+    .offer-desc
+        background-color: #000
+        margin-top: 3px !important
+        padding: 4.5px
+
+.offer-discount
+    font-size: 58px
+    font-weight: bold
+    color: rgb(251,58,63)
+
+.left-side
+    background-image: $left_side
+    background-size: contain
+    background-repeat: no-repeat
+    width: 31.5px
+    height: 128px
+
+.right-side
+    background-image: $right_side
+    background-size: contain
+    background-repeat: no-repeat
+    width: 50px
+    height: 128px
 
 .blog-header-logo, .chat-header-logo
     img
@@ -65,18 +109,280 @@ $counter : url("../assets/counter.png")
     position: relative
     display: block
     text-align: center
-
+    margin: 0 15px
     .img-counter
         width: 45px
         height: 61px
         background-image: $counter
+        background-size: cover
         justify-content: center
         margin: 2.5px
         h2
             margin-bottom: 0px
-    // .text
-    //     position: absolute
-    //     top: 50%
-    //     left: 50%
-    //     text-align: center
-    //     transform: translateX(-50%) translateY(-50%)
+
+.dropdown
+    top: 0
+    left: 0
+    position: absolute
+    z-index: 999
+    .dropdown-content
+        display: none
+        background-color: #f6f6f6
+        min-width: 100vw
+        overflow: auto
+        border: 1px solid #ddd
+        z-index: 1
+        height: 100vh
+        padding-top: calc(10px + 1.5rem)
+        padding-bottom: calc(10px + 1.5rem)
+
+        a
+            color: black
+            padding: 12px 16px
+            text-decoration: none
+            display: block
+
+            &:hover
+                color: #fff
+                background-color: #ddd
+
+    .show
+        display: block
+
+.friday
+    background-color: #000000
+    .row
+        margin: 0
+        min-height: 60px
+        height: 100%
+        vertical-align: middle
+        div
+            div
+                height: 100%
+        .friday-item
+            text-decoration: none
+            padding: 15px 20px
+            height: 100%
+
+            span
+                margin-left: 10px
+                color: #fff
+
+            &:hover
+                background-color: #6161614a
+#unlock, #lamps
+    .section-title
+        position: relative
+        display: block
+        text-align: center
+        padding: 70px 0
+        .discount-image
+            background-image: $labe
+            background-size: cover
+            width: 11.95vw
+            height: 5vw
+            justify-content: center
+            margin: 1em
+            h2
+                margin: 0
+                color: rgb(252,59,63)
+                font-weight: 600
+                font-size: 3vw
+        span
+            font-size: 3.5vw
+            font-weight: 600
+
+    .card-footer
+        background: transparent
+        h5
+            color: rgb(252,59,63)
+        .button
+            text-decoration: none
+            color: #fff
+            padding: 15px 0
+
+            .buy_button
+                background-image: $buy_black
+                background-size: cover
+                max-width: 140px
+                max-height: 40px
+                padding: 22px
+                &:hover
+                    background-image: $buy_red
+
+        .button-more
+            text-decoration: none
+            color: #000
+            padding: 15px 0
+
+            div
+                background-image: $see_more_black
+                background-size: cover
+                width: 20px
+                height: 20px
+                margin-left: 10px
+                &:hover
+                    background-image: $see_more_red
+
+            &:hover
+                color: rgb(252,59,63)
+
+        .hide
+            display: none !important
+
+#gotocat
+    padding: 50px
+
+    .col-md-4
+        padding-left: 0px
+        padding-right: 0px
+
+        .btn
+            width: 100%
+            padding: 15px
+            background-color: #fff
+            border-radius: 0
+            @include box-shadow(3px 6px 10px -4px rgba(0,0,0,0.15))
+
+            span
+                margin-right: 10px
+
+            &:hover
+                background-color: rgb(43,43,43)
+                color: #fff
+#unlock
+    background-color: rgb(247, 250, 252)
+#lamps
+    background-color: rgb(236, 239, 241)
+
+.black-friday-footer
+    height: 100px
+
+@media only screen and (min-width: 1200px)
+    .friday-item
+
+@media only screen and (max-width: 992px)
+    .section-title
+        .discount-image
+            width: 19.9vw !important
+            height: 8.3vw !important
+            h2
+                font-size: 4.5vw !important
+        span
+            font-size: 5vw !important
+    .card
+        margin: 7.5px!important
+
+    .counter
+        margin: 0 2vw
+
+@media only screen and (max-width: 768px)
+    .section-title
+        padding: 40px 0 !important
+        .discount-image
+            width: 23.9vw !important
+            height: 10vw !important
+            h2
+                font-size: 5.5vw !important
+        span
+            font-size: 6vw !important
+    .card-deck
+        margin: 0
+        .card
+            margin: 0 0 15px 0!important
+            min-width: 100%
+
+            .button
+                padding: 0 !important
+
+    .friday-item
+        flex-flow: column wrap
+        text-align: center
+        padding: 15px 0 !important
+
+        img
+            height: 5vh
+
+        span
+            margin: 5px 0 !important
+    #gotocat
+        padding: 10px 0 50px
+
+    .timer
+        p
+            font-size: 3vw !important
+            letter-spacing: 0.1rem
+            padding: 8px
+
+        .counter
+            .img-counter
+                width: 7.5vw
+                height: 10vw
+                h2
+                    font-size: 5vw !important
+
+    .offer
+        margin-left: -4px
+        .offer-title
+            font-size: 40px
+            padding: 9.2px 9px
+        .offer-desc
+            margin-top: 2px !important
+            padding: 3px
+            font-size: 16px
+
+    .offer-discount
+        font-size: 46px
+
+    .left-side
+        width: 26.5px
+        height: 98px
+
+    .right-side
+        width: 40px
+        height: 98px
+
+@media only screen and (max-width: 480px)
+    .col
+        padding: 0 5px
+
+    .friday-item
+        span
+            font-size: .8rem
+
+    .card-footer
+        .flex-column
+            h6
+                font-size: 0.8rem
+                font-weight: 600
+            span
+                font-size: 0.7rem
+            h5
+                font-size: 0.9rem
+                font-weight: 600
+            .buy_button
+                font-size: 0.5rem
+                padding: 0.5rem !important
+
+    .section-title
+        padding: 20px 0 !important
+    .offer
+        .offer-title
+            font-size: 30px
+            padding: 7.2px 6.75px
+
+        .offer-desc
+            margin-top: 1.5px !important
+            padding: 2.25px
+            font-size: 12px
+    
+    .offer-discount
+        font-size: 34px
+
+    .left-side
+        width: 19.8px
+        height: 74.5px
+
+    .right-side
+        width: 30px
+        height: 74.5px
