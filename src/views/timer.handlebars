@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+    {{#each time}}
+    <div class="justify-content-center timer">
+        <div class="counter d-flex justify-content-center">
+            {{#value}}
+            <div class="img-counter d-flex align-items-center">
+                <h2>{{ num }}</h2>
+            </div>
+            {{/value}}
+        </div>
+        <p>{{name}}</p>
+    </div>
+    {{/each}}
+</div>

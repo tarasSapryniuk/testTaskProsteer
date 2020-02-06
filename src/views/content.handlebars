@@ -1,0 +1,55 @@
+{{#each section}}
+<section id="{{id}}">
+    <div class="container-fluid">
+        <div class="justify-content-center text-center section-title d-flex align-items-center">
+            <span>{{title}}</span>
+            <div class="discount-image d-flex align-items-center">
+                <div class="text">
+                    <h2>-{{discount}}%</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-deck row">
+            {{#cards}}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{card_title}}</h5>
+                    <p class="card-text">{{card_text}}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col img d-flex align-items-center justify-content-center"><img src="{{image_src}}"
+                                alt=""></div>
+                        <div class="col d-flex flex-column">
+                            <h6></h6>
+                            <span><strike>USD{{before_price}}</strike></span>
+                            <h5>USD{{after_price}}</h5>
+                            <a href="#" class="button mt-auto">
+                                <div class="buy_button d-flex align-items-center justify-content-center">
+                                    BUY NOW
+                                </div>
+                            </a>
+                            <a href="#" class="button-more d-flex align-items-center mt-auto">
+                                <span>See more</span>
+                                <div></div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {{/cards}}
+        </div>
+
+        <div id="gotocat" class="d-flex justify-content-center">
+            <div class="col col-md-4">
+                <a href="#" class="btn d-flex align-items-center justify-content-center">
+                    <span>GO TO CATEGORY</span>
+                    <img src="{{arrow_img}}">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{{/each}}

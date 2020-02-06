@@ -1,0 +1,11 @@
+<div class="dropdown">
+    <div id="myDropdown" class="dropdown-content container pl-4">
+        <button type="button" role="menu" class="mh-menu-closed" click="{{function}}(event)">
+            <i class="fas fa-times"></i>
+        </button>
+        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+        {{#each links}}
+        <a href="{{address}}">{{text}}</a>
+        {{/each}}
+    </div>
+</div>

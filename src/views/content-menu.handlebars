@@ -1,0 +1,14 @@
+<div class="friday">
+    <div class="row justify-content-center">
+        {{#each elements}}
+        <div class="col col-sm-2">
+            <div class="justify-content-center align-self-center">
+                <a href="{{address}}" class="friday-item d-flex align-items-center">
+                    <img src="{{img_src}}" alt="">
+                    <span>{{value}}</span>
+                </a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
