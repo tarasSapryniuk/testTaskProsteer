@@ -7277,6 +7277,21 @@ a.text-dark:hover, a.text-dark:focus {
   width: 50px;
   height: 128px; }
 
+.tick {
+  height: 125.55px;
+  width: 135px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAACbAgMAAAB+NbOUAAAADFBMVEUAAAAAAAAAAAAAAAA16TeWAAAAA3RSTlMAf4C/aSLHAAACa0lEQVR4Xs3Vse0VMRDE4TPJIiwBHbiEfwuURAfezqAESnAJBId0CWfeQydmnrTrm5CJv+CXzSbviyzLd5maTptOu0zLlKnptOm0y7RMmZpOm067TMuUqem06bTLtEyZmk6bTrtMy5Sp6bTptMu0TJmaTptOu0zLlKnptOm0y7RMmZpOm067TMuUqem06bTLtEyZmk4//U90/d2fX+iPFf36QveFLD+J+vZ7QY3ouW1zEduIHg+6iO1Ex4PmsWUS9QfNY43o+QAzj21EjyfNYzvR8ZfuaSpRf9I01oieTzDT2Eb0uGgS24mOi+5ZKqhfNI41oud20Ti2ET0umsR2ouMf3eNUUL9oHGtEz+2icWwjeoBGsZ3oILpHqaAOGsQa0XMDDWIb0QM0iu1EByhiORXUQYNYI3puoEFsI3qARrGd6ABFLKeCOmgQa0TPDTSIbUQP0Ci2Ex2giOVUUAcNYg0UqaAc24geRIPYTnQEdOdUUA8oYo0oUkEpthE9IorYTnSEdEcqqAcUsUb0IyAoYhvR9xFFbCe6JXRHak451taUY1tKv3EsUnEB2BvHIhUXgFWORSouAHv3EotUXEASG6RmsUFqFhukprFBahYbpCaxv9JUxGKcuowNUrPYIDWJjVOxKqQiVkhFbJSqxnpIq5CKWDGVYzlVjfWEViEVsWIqYjlVjfWUViEVsWIqYpGqxvqCViEVsVIqYpGqxvqSViEVsUIqYpGqxvoNrUIqYpEqxCJVi/VbWpEqxCJViEWqEusCrUiVYpG6jkWqFOsSrUgVYpF6F4tUIdZFWpF6G4vU+9gh0zeX6YcF+ANt6cWC60unPQAAAABJRU5ErkJggg==);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 20px 0; }
+
+.my-text {
+  color: #595959;
+  margin: 0 !important;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 64px; }
+
 .blog-header-logo img, .chat-header-logo img {
   height: 22px; }
 
@@ -7301,6 +7316,7 @@ a.text-dark:hover, a.text-dark:focus {
   position: absolute;
   z-index: 999; }
   .dropdown .dropdown-content {
+    position: fixed;
     display: none;
     background-color: #f6f6f6;
     min-width: 100vw;
@@ -7394,20 +7410,20 @@ a.text-dark:hover, a.text-dark:focus {
   #unlock .card-footer .hide, #lamps .card-footer .hide {
     display: none !important; }
 
-#gotocat {
+#gotocat, #b {
   padding: 50px; }
-  #gotocat .col-md-4 {
+  #gotocat .col-md-4, #b .col-md-4 {
     padding-left: 0px;
     padding-right: 0px; }
-    #gotocat .col-md-4 .btn {
+    #gotocat .col-md-4 .btn, #b .col-md-4 .btn {
       width: 100%;
       padding: 15px;
       background-color: #fff;
       border-radius: 0;
       box-shadow: 3px 6px 10px -4px rgba(0, 0, 0, 0.15); }
-      #gotocat .col-md-4 .btn span {
+      #gotocat .col-md-4 .btn span, #b .col-md-4 .btn span {
         margin-right: 10px; }
-      #gotocat .col-md-4 .btn:hover {
+      #gotocat .col-md-4 .btn:hover, #b .col-md-4 .btn:hover {
         background-color: #2b2b2b;
         color: #fff; }
 
@@ -7420,6 +7436,16 @@ a.text-dark:hover, a.text-dark:focus {
 .black-friday-footer {
   height: 100px; }
 
+#b {
+  margin: 30px 0; }
+  #b .btn {
+    background-color: transparent !important;
+    color: #fff;
+    border: 2px solid #fff; }
+    #b .btn:hover {
+      color: #000 !important;
+      background-color: #fff !important; }
+
 @media only screen and (max-width: 992px) {
   .section-title .discount-image {
     width: 19.9vw !important;
@@ -7431,7 +7457,9 @@ a.text-dark:hover, a.text-dark:focus {
   .card {
     margin: 7.5px !important; }
   .counter {
-    margin: 0 2vw; } }
+    margin: 0 2vw; }
+  #b {
+    padding: 50px 20px 50px; } }
 
 @media only screen and (max-width: 768px) {
   .section-title {

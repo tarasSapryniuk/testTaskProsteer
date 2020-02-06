@@ -18,13 +18,8 @@ import bst from "../assets/bst_dongle.png";
 import cs from "../assets/cs_tool_dongle.png";
 import furious from "../assets/furious_fold_usb.png";
 import arrow from "../assets/goto_arrow.png";
-// import see_more_red from "../assets/see_more_red.png";
+import search from "../assets/search.png";
 
-// let footer = require("./");
-
-import labe from "../assets/labe.png";
-
-const hh = new HandelbarHelper();
 const headerTemplate = require("../views/header.handlebars");
 const menuTemplate = require("../views/menu.handlebars");
 const timerTemplate = require("../views/timer.handlebars");
@@ -75,7 +70,8 @@ const menu_obj = {
       address: "#tools",
       text: "Log In"
     }
-  ]
+  ],
+  search_img: search
 };
 const header_content_obj = {
   title: "BLACK FRIDAY",
