@@ -3,12 +3,20 @@ import DateHelper from "./dateHelper";
 import HandlebarsHelper from "./handlebarsHelper";
 
 export default class MyTimer {
-  constructor(amount) {
+  constructor(amount, callback, timerRender, withoutTimerRender, domElem) {
     this.hh = new HandlebarsHelper();
     this.dh = new DateHelper();
     this.ch = new CookieHelper();
     this._amount = amount | 0;
     this.isClearInterval = false;
+    this.isCreated = false;
+    this.callback = callback;
+    this.domElem = domElem;
+    this.timerRender = timerRender;
+    this.timer;
+    this.withoutTimerRender = withoutTimerRender;
+    this.body = document.querySelector('body').innerHTML
+    console.log(this.body)
   }
 
   set amount(amount) {
@@ -19,42 +27,67 @@ export default class MyTimer {
     return this._amount;
   }
 
-  createTimer(dom) {
-    this._timer(dom);
-    let timer = setInterval(() => this._timer(dom), 1000);
-  }
-
-  _timer(dom) {
-    let difference = 0;
+  createTimer() {
     if (this.ch.getCookie("date")) {
-      const end_date = this.ch.getCookie("date");
-      difference = this.dh.getDate(end_date - new Date().getTime());
-      this.drawTimer(difference, dom);
+      this.timer = setInterval(() => this._timer(), 1000);
+      this._timer();
     } else {
       this.ch.cookie = this.amount;
     }
+  }
 
-    if (difference < 0) {
-      clearInterval(timer);
+  _timer(flag) {
+    let difference = 0;
+
+    const end_date = this.ch.getCookie("date");
+    difference = end_date - new Date().getTime();
+
+    if (difference <= 0) {
+      this.clear()
+      clearInterval(this.timer);
       this.isClearInterval = true;
+      this.ch.deleteCookie("date");
+
+      for (const d of this.withoutTimerRender) 
+        this.hh.draw(d.selector, d.template, d.object);
+      
+    } else {
+      if (!this.isCreated) {
+        this.clear()
+        this.isCreated = true;
+
+        for (const d of this.timerRender) 
+          this.hh.draw(d.selector, d.template, d.object);
+      }
+      this.drawTimer(this.dh.getDate(difference));
     }
   }
 
-  drawTimer(date, doms) {
-    for (const i in doms) {
-      const elem = document.querySelectorAll(`#${doms[i]} .img-counter h2`);
-      this._draw(elem, date[this.dh.getDateKey(i)]);
-    }
+  clear() {
+    document.querySelector('body').innerHTML = this.body;
   }
 
-  _draw(array, date) {
+  drawTimer(date) {
+    const time = [
+      { name: "days", value: [] },
+      { name: "hours", value: [] },
+      { name: "minutes", value: [] },
+      { name: "seconds", value: [] }
+    ];
+    time.forEach((e, i) => {
+      this._draw(e, date[this.dh.getDateKey(i)]);
+    });
+    document.querySelector(this.domElem).innerHTML = this.callback({ time });
+  }
+
+  _draw(e, date) {
     if (/^[0-9]{2}[:.,-]?$/.test(date)) {
-      for (let index = 0; index < array.length; index++) {
-        array[index].innerHTML = date.toString()[index];
+      for (let index = 0; index < 2; index++) {
+        e.value.push({ num: date.toString()[index] });
       }
     } else if (/^[0-9]{1}[:.,-]?$/.test(date)) {
-      array[0].innerHTML = 0;
-      array[1].innerHTML = date.toString()[0];
+      e.value.push({ num: 0 });
+      e.value.push({ num: date.toString()[0] });
     }
   }
 }

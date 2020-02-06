@@ -10,6 +10,7 @@ $see_more_red : url("../assets/see_more_red.png")
 
 $left_side: url("../assets/black_left.png")
 $right_side: url("../assets/black_right.png")
+$tick: url("../assets/black_check.png")
 
 @mixin box-shadow($shadow...)
     -webkit-box-shadow: $shadow
@@ -82,6 +83,12 @@ $right_side: url("../assets/black_right.png")
         margin-top: 3px !important
         padding: 4.5px
 
+.message
+    margin: 20px 70px
+    span
+        font-size: 16px
+        text-decoration: none
+
 .offer-discount
     font-size: 58px
     font-weight: bold
@@ -100,6 +107,21 @@ $right_side: url("../assets/black_right.png")
     background-repeat: no-repeat
     width: 50px
     height: 128px
+
+.tick 
+    height: 125.55px
+    width: 135px
+    background-image: $tick
+    background-size: cover
+    background-repeat: no-repeat
+    margin: 20px 0
+
+.my-text 
+    color: rgb(89, 89, 89)
+    margin: 0 !important
+    line-height: 1
+    font-weight: 600
+    font-size: 64px
 
 .blog-header-logo, .chat-header-logo
     img
@@ -126,6 +148,7 @@ $right_side: url("../assets/black_right.png")
     position: absolute
     z-index: 999
     .dropdown-content
+        position: fixed
         display: none
         background-color: #f6f6f6
         min-width: 100vw
@@ -230,7 +253,7 @@ $right_side: url("../assets/black_right.png")
         .hide
             display: none !important
 
-#gotocat
+#gotocat, #b
     padding: 50px
 
     .col-md-4
@@ -258,6 +281,18 @@ $right_side: url("../assets/black_right.png")
 .black-friday-footer
     height: 100px
 
+#b
+    margin: 30px 0
+    .btn
+        background-color: transparent !important
+        color: #fff
+        border: 2px solid #fff
+
+        &:hover 
+            color: #000 !important
+            background-color: #fff !important
+        
+
 @media only screen and (min-width: 1200px)
     .friday-item
 
@@ -275,6 +310,8 @@ $right_side: url("../assets/black_right.png")
 
     .counter
         margin: 0 2vw
+    #b
+        padding: 50px 20px 50px
 
 @media only screen and (max-width: 768px)
     .section-title
@@ -342,6 +379,17 @@ $right_side: url("../assets/black_right.png")
         width: 40px
         height: 98px
 
+    .message
+        margin: 20px 10px 
+        padding-bottom: 15px
+        line-height: 1rem
+        span
+            font-size: 12px
+            font-weight: 400 !important
+            &:last-child
+                display: none
+            
+
 @media only screen and (max-width: 480px)
     .col
         padding: 0 5px
@@ -375,9 +423,11 @@ $right_side: url("../assets/black_right.png")
             margin-top: 1.5px !important
             padding: 2.25px
             font-size: 12px
-    
+
     .offer-discount
         font-size: 34px
+        margin: 0 !important
+        padding-bottom: 60px
 
     .left-side
         width: 19.8px
