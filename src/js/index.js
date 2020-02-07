@@ -229,10 +229,11 @@ const myTimer = new MyTimer(
   draw_array_without_timer,
   "#timer"
 );
-myTimer.createTimer();
 
 const menu = new Menu();
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = () => {
+  myTimer.createTimer();
+
   document
     .querySelector(".mh-header-primary")
     .addEventListener("click", menu.open);
@@ -242,4 +243,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const screenService = new ScreenService();
   screenService.resize();
   document.querySelector("body").onresize = screenService.resize;
-});
+};

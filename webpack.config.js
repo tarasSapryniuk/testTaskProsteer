@@ -1,3 +1,4 @@
+require("@babel/polyfill");
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -7,7 +8,7 @@ const autoprefixer = require("autoprefixer");
 module.exports = {
   mode: "development",
   entry: {
-    bundle: "./src/js/index.js",
+    bundle: ["@babel/polyfill", "./src/js/index.js"],
     frontend: "./src/styles/style.sass"
   },
   output: {
@@ -15,6 +16,17 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+            plugins: ['@babel/plugin-transform-shorthand-properties']
+          }
+        }
+      },
       { test: /\.handlebars$/, loader: "handlebars-loader" },
       {
         test: /\.(sass|css)$/,
@@ -49,7 +61,7 @@ module.exports = {
           loader: "url-loader"
         }
       }
-    ],
+    ]
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({

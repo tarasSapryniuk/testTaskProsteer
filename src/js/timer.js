@@ -16,7 +16,6 @@ export default class MyTimer {
     this.timer;
     this.withoutTimerRender = withoutTimerRender;
     this.body = document.querySelector('body').innerHTML
-    console.log(this.body)
   }
 
   set amount(amount) {
@@ -48,15 +47,14 @@ export default class MyTimer {
       this.isClearInterval = true;
       this.ch.deleteCookie("date");
 
-      for (const d of this.withoutTimerRender) 
+      for (const d of this.withoutTimerRender)
         this.hh.draw(d.selector, d.template, d.object);
-      
+
     } else {
       if (!this.isCreated) {
         this.clear()
         this.isCreated = true;
-
-        for (const d of this.timerRender) 
+        for (const d of this.timerRender)
           this.hh.draw(d.selector, d.template, d.object);
       }
       this.drawTimer(this.dh.getDate(difference));
@@ -74,9 +72,11 @@ export default class MyTimer {
       { name: "minutes", value: [] },
       { name: "seconds", value: [] }
     ];
-    time.forEach((e, i) => {
-      this._draw(e, date[this.dh.getDateKey(i)]);
-    });
+    for (const i in time) {
+      if (time.hasOwnProperty(i)) {
+        this._draw(time[i], date[this.dh.getDateKey(i)]);
+      }
+    }
     document.querySelector(this.domElem).innerHTML = this.callback({ time });
   }
 
