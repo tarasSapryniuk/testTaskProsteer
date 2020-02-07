@@ -3,11 +3,11 @@ export default class ScreenService {
     const w = window.outerWidth | window.innerWidth;
     const h = window.outerHeight | window.innerHeight;
     let titles = new Set(), contents = new Set();
-    document
-      .querySelectorAll(".card-body h5.card-title")
+    Array.prototype.slice.call(document
+      .querySelectorAll(".card-body h5.card-title"), 0)
       .forEach(e => titles.add(e.innerHTML));
-    document
-      .querySelectorAll(".col.d-flex.flex-column")
+      Array.prototype.slice.call(document
+      .querySelectorAll(".col.d-flex.flex-column"), 0)
       .forEach(e => contents.add(e.innerHTML));
 
     titles = Array.from(titles);
