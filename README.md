@@ -45,7 +45,7 @@ module.exports = {
 npm run prod:build
 ```
 
-3\. If you’re optimizing caching, run the production server to see if the change helps:
+3\. Run the development server:
 
 ```bash
 npm run server
