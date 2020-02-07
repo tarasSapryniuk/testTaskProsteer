@@ -46,8 +46,9 @@
     "webpack": "^4.41.5"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
-    "build": "webpack --config webpack.config.js"
+    "server": "webpack-dev-server --hot --inline --config webpack.config.js",
+    "dev:build": "webpack --mode development",
+    "prod:build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
