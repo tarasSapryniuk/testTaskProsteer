@@ -15,7 +15,7 @@
     "handlebars": "^4.7.2",
     "imports-loader": "^0.8.0",
     "jquery": "^3.4.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "popper.js": "^1.16.1",
     "precss": "^4.0.0",
     "tether": "^1.4.7",
